@@ -1,23 +1,20 @@
-function submitForm() {
+const submitForm = (e) => {
+    
+    e.preventDefault();
+
     var pass = document.getElementById("password").value;
     var email = document.getElementById("email").value;
 
-    // Send data to the backend
-    fetch('/process', {
+    fetch('/authentication', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ name: pass, email: email })
-    })
-    .then(response => response.json())
-    .then(data => {
-        // Handle the response from the backend
-        console.log(data);
+        body: JSON.stringify({ pass: pass, email: email })
     })
     .catch(error => {
         console.error('Error:', error);
     });
 }
 
-
+document.querySelector('.auth-form').addEventListener('submit', submitForm);
