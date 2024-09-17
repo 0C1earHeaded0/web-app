@@ -1,4 +1,4 @@
-const getDownloadPage= async (req, res) => {
+const getDownloadPage = async (req, res) => {
     res.render('downloadPage');
 }
 

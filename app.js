@@ -1,13 +1,13 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import Router from './routes/index.js';
+import RouterWOAuth from './routes/index.js';
 import expressCors from 'express-cors';
 
 const app = express();
 
 app.use(bodyParser.json());
 
-
+RouterWOAuth(app);
 
 // Middleware
 app.set('view engine', 'ejs');
@@ -17,11 +17,12 @@ app.use(expressCors({
 }))
 
 app.use(express.static('views'));
+app.use(express.static('public'));
 app.use(express.static('public/style'));
 app.use(express.static('public/scripts/auth'));
 app.use(express.static('public/scripts'));
 
-Router(app);
+
 
 // Start the server
 const port = 3000;

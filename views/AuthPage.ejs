@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="auth.css">
+    <link rel="stylesheet" href="/auth.css">
     <title>Auth</title>
 </head>
 
@@ -22,13 +22,14 @@
                 <form class="auth-form" method="post">
                     <input class="auth-item" id="email" placeholder="example@mail.ru" type="email" name="mail" required>
                     <input class="auth-item" id="password" placeholder="password" type="password" name="pass" required>
+                    <p class="error hide" id="error">Неверная почта или пароль.</p>
                     <input class="auth-item" id="btn" type="submit" value="ВОЙТИ">
                 </form>
             </div>
         </div>
     </div>
 
-    <script src="back.js"></script>
+    <script src="/back.js"></script>
     <script src="authentication.js"></script>
 </body>
 
