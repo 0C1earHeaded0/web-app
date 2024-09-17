@@ -1,5 +1,4 @@
 const getAuthPage = async (req, res) => {
-    //console.log("req: ",req);
     res.render('AuthPage');
 }
 

@@ -10,9 +10,10 @@ Router(app);
 app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 
-app.use(express.static('views/site'));
-app.use(express.static('public'));
-app.use(express.static('scripts'));
+app.use(express.static('views'));
+app.use(express.static('public/style'));
+app.use(express.static('public/scripts/auth'));
+app.use(express.static('public/scripts'));
 
 // Start the server
 const port = 3000;

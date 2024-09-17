@@ -24,3 +24,7 @@ li {
 .nav-link:hover {
     color: grey;
 }
+
+.container {
+    position: relative;
+}
