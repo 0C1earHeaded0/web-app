@@ -10,10 +10,11 @@ class UserModel {
         users.push(this);
     }
 
-
-    async findOne(email) {
+    static async findOne(email) {
         users.forEach(element => {
-            
+            if (element.email == email) {
+                return element;
+            }
         });
     }
 }

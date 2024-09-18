@@ -13,13 +13,26 @@ const submitForm = async (e) => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ pass: pass, email: email })
-    })
+        body: JSON.stringify({ pass: pass, login: email })
+    }).then(response => response.json())
     .catch(error => {
         console.error('Error:', error);
     });
 
-    if (response.ok) {
+    const token = response.token;
+
+    let res = await fetch('/download', {
+        method: 'GET',
+        headers: {
+            'authorization': "token: " + token
+        },
+        user: {
+            "id": response.id,
+            "login": response.email
+        }
+    })
+
+    if (res.ok) {
         window.location.replace('/download');
     } else {
         error.classList.remove('hide');

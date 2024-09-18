@@ -1,10 +1,17 @@
+import jwt from 'jsonwebtoken';
+import users from '../users.json' assert {type: 'json'};
+import tokenKey from '../app.js';
 const checkPassword = async (req, res, next) => {
-    if (req.body.pass == '12345') {
-        res.sendStatus(200);
+    for (let user of users) {
+        if (req.body.email === user.email && req.body.pass === user.password) {
+            return res.status(200).json({
+                id: user.id,
+                email: user.login,
+                token: jwt.sign({id: user.id}, tokenKey),
+            });
+        }
     }
-    else {
-        res.sendStatus(403);
-    }
+    return res.status(404).json({message: 'User not found'});
 }
 
 const authUser = async (app) => {
