@@ -19,9 +19,11 @@ const submitForm = async (e) => {
         console.error('Error:', error);
     });
 
-    const token = response.token;
+    localStorage.setItem('token', response.token);
 
-    let res = await fetch('/download', {
+    let token = localStorage.getItem('token');
+
+    await fetch('/download', {
         method: 'GET',
         headers: {
             'authorization': "token: " + token
@@ -30,13 +32,13 @@ const submitForm = async (e) => {
             "id": response.id,
             "login": response.email
         }
+    }).then(res => {
+        if (res.ok) {
+            window.location.href = '/download';
+        } else {
+            error.classList.remove('hide');
+        }
     })
-
-    if (res.ok) {
-        window.location.replace('/download');
-    } else {
-        error.classList.remove('hide');
-    }
 }
 
 document.querySelector('.auth-form').addEventListener('submit', submitForm);

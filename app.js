@@ -25,16 +25,17 @@ app.use((req, res, next) => {
                     for (let user of users) {
                         if (user.id === payload.id) {
                             req.user = user;
-                            next();
+                            // next();
                         }
                     }
 
-                    if (!req.user) next();
+                    if (!req.user) {
+                        next();
+                    }
                 }
             }
         );
     }
-
     next();
 });
 
