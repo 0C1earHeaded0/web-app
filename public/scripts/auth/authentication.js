@@ -19,7 +19,7 @@ const submitForm = async (e) => {
         console.error('Error:', error);
     });
 
-    localStorage.setItem('token', response.token);
+    document.cookie = `token=${response.token}; path=/;`;
 
     let token = localStorage.getItem('token');
 

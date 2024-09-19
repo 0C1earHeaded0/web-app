@@ -5,6 +5,7 @@ import RouterAuthOnly from './routes/indexAuthOnly.js';
 import expressCors from 'express-cors';
 import jwt from 'jsonwebtoken';
 import users from './users.json' assert {type: 'json'};
+import cookieParser from 'cookie-parser';
 
 const app = express();
 
@@ -12,12 +13,14 @@ const tokenKey = 'secret';
 
 app.use(bodyParser.json());
 
+app.use(cookieParser());
+
 RouterWOAuth(app);
 
 app.use((req, res, next) => {
-    if (req.headers.authorization) {
+    if (req.cookies.token) {
         jwt.verify(
-            req.headers.authorization.split(' ')[1],
+            req.cookies.token,
             tokenKey,
             (err, payload) => {
                 if (err) next();
