@@ -24,14 +24,7 @@ const submitForm = async (e) => {
     let token = localStorage.getItem('token');
 
     await fetch('/download', {
-        method: 'GET',
-        headers: {
-            'authorization': "token: " + token
-        },
-        user: {
-            "id": response.id,
-            "login": response.email
-        }
+        method: 'GET'
     }).then(res => {
         if (res.ok) {
             window.location.href = '/download';

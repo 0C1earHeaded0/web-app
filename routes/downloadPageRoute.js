@@ -3,9 +3,7 @@ const getDownloadPage = async (req, res) => {
         res.render('downloadPage');
     }
     else
-        return res
-            .status(401)
-            .json({ message: 'Not authorized' });
+        res.redirect('/auth');
 }
 
 const download = async (app) => {
