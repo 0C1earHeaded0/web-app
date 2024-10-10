@@ -55,9 +55,8 @@ app.use(express.static('views'));
 app.use(express.static('public'));
 app.use(express.static('public/style'));
 app.use(express.static('public/scripts/auth'));
+app.use(express.static('public/scripts/download'));
 app.use(express.static('public/scripts'));
-
-
 
 // Start the server
 const port = 3000;
