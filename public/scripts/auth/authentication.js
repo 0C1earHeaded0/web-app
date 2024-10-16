@@ -17,11 +17,10 @@ const submitForm = async (e) => {
     }).then(response => response.json())
     .catch(error => {
         console.error('Error:', error);
+        return;
     });
 
     document.cookie = `token=${response.token}; path=/;`;
-
-    let token = localStorage.getItem('token');
 
     await fetch('/download', {
         method: 'GET'

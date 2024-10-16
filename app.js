@@ -15,31 +15,31 @@ app.use(bodyParser.json());
 
 app.use(cookieParser());
 
+app.use(express.static('views'));
+app.use(express.static('public'));
+app.use(express.static('public/style'));
+app.use(express.static('public/scripts/auth'));
+app.use(express.static('public/scripts/download'));
+app.use(express.static('public/scripts'));
+
 RouterWOAuth(app);
 
 app.use((req, res, next) => {
     if (req.cookies.token) {
-        jwt.verify(
-            req.cookies.token,
-            tokenKey,
-            (err, payload) => {
-                if (err) next();
+        jwt.verify(req.cookies.token, tokenKey, (err, payload) => {
+                if (err) 
+                    res.status(404).json({message: 'Not Auth'});
                 else if (payload) {
                     for (let user of users) {
                         if (user.id === payload.id) {
-                            req.user = user;
-                            // next();
+                            next();
                         }
-                    }
-
-                    if (!req.user) {
-                        next();
                     }
                 }
             }
         );
     }
-    next();
+    res.redirect('/auth');
 });
 
 RouterAuthOnly(app);
@@ -51,12 +51,7 @@ app.use(expressCors({
     origin: '*'
 }))
 
-app.use(express.static('views'));
-app.use(express.static('public'));
-app.use(express.static('public/style'));
-app.use(express.static('public/scripts/auth'));
-app.use(express.static('public/scripts/download'));
-app.use(express.static('public/scripts'));
+
 
 // Start the server
 const port = 3000;

@@ -1,9 +1,9 @@
 import pg from 'pg';
 const getDownloadPage = async (req, response) => {
-    if (req.user && Object.keys(req.query).length == 0) {
+    if (Object.keys(req.query).length == 0) {
         response.render('downloadPage');
     }
-    else if (req.user && Object.keys(req.query).length == 2) {
+    else if (Object.keys(req.query).length == 2) {
         const date_from = req.query.date_from;
         const date_to = req.query.date_to;
 
@@ -28,8 +28,6 @@ const getDownloadPage = async (req, response) => {
             }
         })
     }
-    else
-        response.redirect('/auth');
 }
 
 const download = async (app) => {
