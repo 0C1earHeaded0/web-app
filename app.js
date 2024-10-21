@@ -21,11 +21,12 @@ app.use(express.static('public/style'));
 app.use(express.static('public/scripts/auth'));
 app.use(express.static('public/scripts/download'));
 app.use(express.static('public/scripts'));
+app.use(express.static('plugins/jput/js'));
 
 RouterWOAuth(app);
 
 app.use((req, res, next) => {
-    if (req.cookies.token) {
+    if (req.cookies.token !== undefined) {
         jwt.verify(req.cookies.token, tokenKey, (err, payload) => {
                 if (err) 
                     res.status(404).json({message: 'Not Auth'});
@@ -39,7 +40,7 @@ app.use((req, res, next) => {
             }
         );
     }
-    res.redirect('/auth');
+    // res.redirect('/auth');
 });
 
 RouterAuthOnly(app);

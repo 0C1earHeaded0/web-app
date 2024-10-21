@@ -3,7 +3,7 @@ import users from '../users.json' assert {type: 'json'};
 import tokenKey from '../app.js';
 const checkPassword = async (req, res, next) => {
     for (let user of users) {
-        if (req.body.email === user.email && req.body.pass === user.password) {
+        if (req.body.login === user.login && req.body.pass === user.password) {
             return res.status(200).json({
                 id: user.id,
                 email: user.login,
