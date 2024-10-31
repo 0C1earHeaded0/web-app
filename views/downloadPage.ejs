@@ -20,16 +20,17 @@
         </div>
     </div>
 
-    <h3 class="err hide">Данных нет</h3>
+    <h3 class="err hide">ДАННЫХ НЕТ</h3>
 
     <div class="prev hide">
-        <h3 class="prev-header">Превью данных:</h3>
+        <h3 class="prev-header">Превью данных (Первые 5 строк):</h3>
         <table id="table">
             <tr>
                 <th>ID</th>
                 <th>NAME</th>
                 <th>STATUS</th>
-                <th>SPECIES</th>
+                <th>SPECIES</th> 
+                <th>TYPE</th>
                 <th>GENDER</th>
                 <th>IMAGE</th>
                 <th>URL</th>
@@ -38,8 +39,12 @@
                 <th>LOCATION_NAME</th>
             </tr>
         </table>
+        <div class="conteiner_dbtn">
+            <input class="download_btn" type="button" value="Скачать">
+        </div>
     </div>
     
     <script src="receiveData.js"></script>
+    <script src="downloadDataF.js"></script>
 </body>
 </html>

@@ -18,12 +18,15 @@ const receiveData = async (req, response) => {
         .then(() => console.log('Connected to PostgreSQL'))
         .catch(err => console.error('Connection error', err.stack));
 
-        client.query(`SELECT * FROM public.characters WHERE created BETWEEN '${date_from}' AND '${date_to}'`, (err, res) => {
+        client.query(`SELECT id, name, status, species, type, gender, image, url, created::date::varchar, origin_name, location_name FROM public.characters WHERE created BETWEEN '${date_from}' AND '${date_to}'`, (err, res) => {
             if (err) console.log('Ошибка запроса: ' + err);
             else {
                 response.status(200).json(res.rows);
             }
         })
+    } 
+    else if (req.query.date_from && req.query.date_to && req.query.download) {
+        res = receiveQueryResult(req);
     }
 }
 

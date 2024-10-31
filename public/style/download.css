@@ -19,6 +19,10 @@ body {
 
 .prev {
     margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: rgb(255, 228, 168);
+    border-radius: 16px;
+    padding: 25px
 }
 
 #table {
@@ -74,7 +78,27 @@ td, th {
 
 .prev-header {
     text-align: center;
-    margin-bottom: 10px;
-    font-size: 48px;
+    margin-bottom: 25px;
+    font-size: 38px;
     font-family: monospace;
+}
+
+.err {
+    color: red;
+    margin-top: 25px;
+    font-size: 34px;
+    letter-spacing: 8px;
+}
+
+.conteiner_dbtn {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+.download_btn {
+    border: 1px solid rgb(16, 161, 161);
+    border-radius: 8px;
+    padding: 5px 25px;
+    font-weight: bold;
+    font-size: 16px;
 }
