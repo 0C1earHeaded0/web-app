@@ -13,9 +13,9 @@ const downloadData = async (req, response) => {
         console.log(typeof(date_from), date_from);
 
         const client = new pg.Client({
-            host: 'localhost',
+            host: '172.19.0.2',
             user: 'postgres',
-            password: 'postgres',
+            password: '12345',
             database: 'postgres',
             port: 5432,
         });
@@ -40,8 +40,8 @@ const downloadData = async (req, response) => {
                 });
                 const __filename = fileURLToPath(import.meta.url);
                 const __dirname = dirname(__filename);
-                convertCsvToXlsx(path.join(__dirname, '..\\data.csv'), path.join(__dirname, '..\\data.xlsx'), {overwrite: "true", sheetName: "characters"});
-                response.download(path.join(__dirname, '..\\data.xlsx'));
+                convertCsvToXlsx(path.join(__dirname, '..//data.csv'), path.join(__dirname, '..//data.xlsx'), {overwrite: "true", sheetName: "characters"});
+                response.download(path.join(__dirname, '..//data.xlsx'));
             }
         })
     }

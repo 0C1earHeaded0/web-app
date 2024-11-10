@@ -4,7 +4,7 @@ import RouterWOAuth from './routes/indexWOAuth.js';
 import RouterAuthOnly from './routes/indexAuthOnly.js';
 import expressCors from 'express-cors';
 import jwt from 'jsonwebtoken';
-import users from './users.json' assert {type: 'json'};
+import users from './users.json' with {type: 'json'};
 import cookieParser from 'cookie-parser';
 
 const app = express();

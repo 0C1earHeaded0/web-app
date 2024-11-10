@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import users from '../users.json' assert {type: 'json'};
+import users from '../users.json' with {type: 'json'};
 import tokenKey from '../app.js';
 const checkPassword = async (req, res, next) => {
     for (let user of users) {

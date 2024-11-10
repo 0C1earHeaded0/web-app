@@ -7,9 +7,9 @@ const receiveData = async (req, response) => {
         console.log(typeof(date_from), date_to);
 
         const client = new pg.Client({
-            host: 'localhost',
+            host: '172.19.0.2',
             user: 'postgres',
-            password: 'postgres',
+            password: '12345',
             database: 'postgres',
             port: 5432,
         });
