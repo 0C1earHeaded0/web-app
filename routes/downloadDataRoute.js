@@ -13,11 +13,11 @@ const downloadData = async (req, response) => {
         console.log(typeof(date_from), date_from);
 
         const client = new pg.Client({
-            host: '172.19.0.2',
+            host: process.env.POSTGRES_HOST,
             user: 'postgres',
-            password: '12345',
+            password: process.env.POSTGRES_PASSWORD,
             database: 'postgres',
-            port: 5432,
+            port: process.env.POSTGRES_PORT,
         });
 
         client.connect()
